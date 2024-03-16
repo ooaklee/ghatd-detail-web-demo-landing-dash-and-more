@@ -38,7 +38,7 @@ func main() {
 	httpRouter := router.NewRouter(response.GetResourceNotFoundError, response.GetDefault200Response, tempRouterMiddlewares...)
 
 	// Prep web detail
-	NewWebDetail(httpRouter, "", "", "", "", content, "external/")
+	NewWebDetail(httpRouter, "ghat(d)", "https://ghatd.com", "example@ghatd.com", "ghatd ltd", content, "external/")
 
 	// Define server
 	srv := &http.Server{
