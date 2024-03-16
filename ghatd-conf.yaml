@@ -1,0 +1,25 @@
+version: detail/v0alpha1
+type: web
+name: "demo-landing-dash-and-more"
+description: |
+  The Demo landing page with Dash pages detail is an available extension that
+  can be used by GHAT(D) to add functionality.
+experimental: true
+features:
+  - landing page
+  - terms policy page
+  - privacy policy page
+  - cookie policy page
+  - sign in page
+  - sign up page
+  - forgot password page
+  - coming soon page
+  - dashboard overview page
+  - dashboard user profile page
+  - dashboard calendar page
+  - dashboard blank page
+  - dashboard ui components page
+  - htmx
+  - alpine
+  - tailwind
+  - daisy ui
