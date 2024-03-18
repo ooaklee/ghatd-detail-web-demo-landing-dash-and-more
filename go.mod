@@ -4,7 +4,9 @@ go 1.22.0
 
 require (
 	github.com/ooaklee/ghatd v0.1.1-0.20240316161116-dc3d856805a7
+	//>ghatd {{ define "WebDetailGoModRequirePackages" }}
 	go.uber.org/zap v1.27.0
+//>ghatd {{ end }}
 )
 
 require (
