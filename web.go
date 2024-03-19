@@ -21,12 +21,8 @@ import (
 
 // content holds our static web server content.
 //
-//>ghatd {{ define "WebDetailEmbeds" }}
-
 //go:embed external/ui/html/*.tmpl.html external/ui/static/* external/ui/html/pages/*.tmpl.html external/ui/html/partials/**/*.tmpl.html external/ui/html/partials/*.tmpl.html
 var content embed.FS
-
-//>ghatd {{ end }}
 
 const serverPort = ":4044"
 
