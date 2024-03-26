@@ -10,6 +10,9 @@ import (
 
 	"github.com/gorilla/mux"
 
+	"github.com/ooaklee/ghatd/external/logger"
+	loggerMiddleware "github.com/ooaklee/ghatd/external/logger/middleware"
+	"github.com/ooaklee/ghatd/external/middleware/contenttype"
 	"github.com/ooaklee/ghatd/external/response"
 	"github.com/ooaklee/ghatd/external/router"
 
@@ -21,14 +24,24 @@ import (
 
 // content holds our static web server content.
 //
-//go:embed external/ui/html/*.tmpl.html external/ui/static/* external/ui/html/pages/*.tmpl.html external/ui/html/partials/**/*.tmpl.html external/ui/html/partials/*.tmpl.html
+//go:embed external/ui/static/* external/ui/html/*
 var content embed.FS
 
 const serverPort = ":4044"
 
 func main() {
 
-	tempRouterMiddlewares := []mux.MiddlewareFunc{}
+	// Initialise detail logger
+	appLogger, err := logger.NewLogger(
+		"info",
+		"local",
+		"ghatd-detail-api",
+	)
+	if err != nil {
+		log.Default().Panicf("server/unable-to-initiate-logger - %v", err)
+	}
+
+	tempRouterMiddlewares := []mux.MiddlewareFunc{loggerMiddleware.NewLogger(appLogger).HTTPLogger, contenttype.NewContentType}
 
 	// Initialise router
 	httpRouter := router.NewRouter(response.GetResourceNotFoundError, response.GetDefault200Response, tempRouterMiddlewares...)
